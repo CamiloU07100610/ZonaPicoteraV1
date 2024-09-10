@@ -14,6 +14,7 @@ function registrarUsuario($nombre, $email, $password, $imagen) {
     $sql = "SELECT id FROM usuarios WHERE email = $email";
     $result = $conn->query($sql);
     if ($result->rowCount() > 0) {
+        error_log("Email already exists: $email");
         return false; // Email already exists
     }
     $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, password, imagen) VALUES (?, ?, ?, ?)");
@@ -29,6 +30,7 @@ function registrarUsuario($nombre, $email, $password, $imagen) {
         $_SESSION['es_admin'] = 0; // Default to non-admin
         return true;
     } else {
+        error_log("Error executing statement: " . implode(", ", $stmt->errorInfo()));
         return false;
     }
 }
