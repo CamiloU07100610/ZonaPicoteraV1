@@ -3,7 +3,7 @@
         'name' => 'camilou07100610/zona-picotera',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '7ae2083702d18087640a9d0084f4e8405ef59d21',
+        'reference' => '63c5372c0fb9faca616aaf8b50ad25960e875fbd',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'camilou07100610/zona-picotera' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '7ae2083702d18087640a9d0084f4e8405ef59d21',
+            'reference' => '63c5372c0fb9faca616aaf8b50ad25960e875fbd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
