@@ -43,9 +43,9 @@
             ],
             "authors": [
                 {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "https://ocramius.github.io/"
+                    "name": "Camilo Morales",
+                    "email": "camilo.morales-ca@uniminuto.edu.co",
+                    "homepage": "https://misty-block-b36.notion.site/La-p-gina-de-nuestra-asociaci-n-6a9a66c4ce664feca41063689dbe2498?pvs=25"
                 }
             ],
             "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
