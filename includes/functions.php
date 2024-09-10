@@ -1,7 +1,6 @@
 <?php
 require_once 'db.php';
 
-// includes/functions.php
 
 function registrarUsuario($nombre, $email, $password, $imagen) {
     $conn = conectarDB();
@@ -15,7 +14,7 @@ function registrarUsuario($nombre, $email, $password, $imagen) {
     $sql = "SELECT id FROM usuarios WHERE email = $email";
     $result = $conn->query($sql);
     if ($result->rowCount() > 0) {
-        return false;
+        return false; // Email already exists
     }
     $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, password, imagen) VALUES (?, ?, ?, ?)");
     $stmt->bindParam(1, $nombre);
@@ -27,12 +26,12 @@ function registrarUsuario($nombre, $email, $password, $imagen) {
         $_SESSION['usuario_id'] = $conn->lastInsertId();
         $_SESSION['nombre'] = $nombre;
         $_SESSION['email'] = $email;
+        $_SESSION['es_admin'] = 0; // Default to non-admin
         return true;
     } else {
         return false;
     }
 }
-// includes/functions.php
 
 function iniciarSesion($email, $password) {
     $conn = conectarDB();

@@ -1,5 +1,6 @@
 
 <?php
+
 require_once 'includes/header.php';
 require_once 'includes/functions.php';
 
@@ -14,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: index.php');
         exit;
     } else {
-        echo "<div class='alert alert-danger'>Error en el registro.</div>";
+        echo "<div class='alert alert-danger'>Error en el registro. El email ya está registrado o hubo un problema con la base de datos.</div>";
     }
 }
 ?>
