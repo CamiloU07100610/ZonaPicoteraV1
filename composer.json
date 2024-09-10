@@ -1,4 +1,7 @@
 {
+  "name": "camilou07100610/zona-picotera",
+  "description": "A PHP package for managing Zona Picotera application",
+  "license": "proprietary",
   "require": {
     "php": "^7.4 || ^8.2"
   },
