@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'name' => 'camilou07100610/zona-picotera',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '1edaa600be747a41cdf84debdda8384d2d79a238',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+        'camilou07100610/zona-picotera' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '1edaa600be747a41cdf84debdda8384d2d79a238',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
