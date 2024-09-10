@@ -1,6 +1,6 @@
+
 <?php
 require_once 'db.php';
-
 
 function registrarUsuario($nombre, $email, $password, $imagen) {
     $conn = conectarDB();
@@ -73,44 +73,6 @@ function subirContenido($titulo, $tipo, $archivo) {
     return $resultado;
 }
 
-function aumentarVistas($contenido_id) {
-    session_start();
-    $current_time = time();
-    $session_key = 'last_viewed_' . $contenido_id;
-    if (!isset($_SESSION[$session_key]) || ($current_time - $_SESSION[$session_key]) > 1800) {
-        $conn = conectarDB();
-        $stmt = $conn->prepare("UPDATE contenidos SET vistas = vistas + 1 WHERE id = ?");
-        $stmt->bindParam(1, $contenido_id);
-        $stmt->execute();
-        $stmt->close();
-        $conn->close();
-        $_SESSION[$session_key] = $current_time;
-    }
-}
-
-function obtenerComentarios($contenido_id) {
-    $conn = conectarDB();
-    $stmt = $conn->prepare("SELECT * FROM comentarios WHERE contenido_id = ?");
-    $stmt->bindParam(1, $contenido_id);
-    $stmt->execute();
-    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->close();
-    $conn->close();
-    return $resultado;
-}
-
-function agregarComentario($contenido_id, $usuario_id, $comentario) {
-    $conn = conectarDB();
-    $stmt = $conn->prepare("INSERT INTO comentarios (contenido_id, usuario_id, comentario) VALUES (?, ?, ?)");
-    $stmt->bindParam(1, $contenido_id);
-    $stmt->bindParam(2, $usuario_id);
-    $stmt->bindParam(3, $comentario);
-    $resultado = $stmt->execute();
-    $stmt->close();
-    $conn->close();
-    return $resultado;
-}
-
 function obtenerContenidos($tipo, $orden, $pagina) {
     $conn = conectarDB();
     $offset = ($pagina - 1) * ITEMS_PER_PAGE;
@@ -122,52 +84,6 @@ function obtenerContenidos($tipo, $orden, $pagina) {
     $stmt->bindParam(3, $itemsPerPage, PDO::PARAM_INT);
     $stmt->execute();
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->close();
-    $conn->close();
-    return $resultado;
-}
-
-function contarContenidos($tipo) {
-    $conn = conectarDB();
-    $stmt = $conn->prepare("SELECT COUNT(*) as total FROM contenidos WHERE tipo = ?");
-    $stmt->bindParam(1, $tipo);
-    $stmt->execute();
-    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-    $stmt->close();
-    $conn->close();
-    return $resultado['total'];
-}
-
-function actualizarUsuario($usuario_id, $nombre, $email, $password, $imagen) {
-    $conn = conectarDB();
-    $sql = "UPDATE usuarios SET nombre = ?, email = ?, password = ?, imagen = ? WHERE id = ?";
-    if (!empty($password)) {
-        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-    } else {
-        $stmt = $conn->prepare("SELECT password FROM usuarios WHERE id = ?");
-        $stmt->bindParam(1, $usuario_id);
-        $stmt->execute();
-        $stmt->bindColumn(1, $passwordHash);
-        $stmt->fetch(PDO::FETCH_BOUND);
-        $stmt->close();
-    }
-    if (is_array($imagen) && $imagen['error'] == UPLOAD_ERR_OK) {
-        $imagenContenido = file_get_contents($imagen['tmp_name']);
-    } else {
-        $stmt = $conn->prepare("SELECT imagen FROM usuarios WHERE id = ?");
-        $stmt->bindParam(1, $usuario_id);
-        $stmt->execute();
-        $stmt->bindColumn(1, $imagenContenido);
-        $stmt->fetch(PDO::FETCH_BOUND);
-        $stmt->close();
-    }
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(1, $nombre);
-    $stmt->bindParam(2, $email);
-    $stmt->bindParam(3, $passwordHash);
-    $stmt->bindParam(4, $imagenContenido, PDO::PARAM_LOB);
-    $stmt->bindParam(5, $usuario_id, PDO::PARAM_INT);
-    $resultado = $stmt->execute();
     $stmt->close();
     $conn->close();
     return $resultado;
