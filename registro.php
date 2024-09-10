@@ -1,4 +1,3 @@
-// registro.php
 
 <?php
 require_once 'includes/header.php';
@@ -11,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagen = $_FILES['imagen'];
 
     if (registrarUsuario($nombre, $email, $password, $imagen)) {
+        $_SESSION['mensaje_exito'] = "Registro exitoso.";
         header('Location: index.php');
         exit;
     } else {

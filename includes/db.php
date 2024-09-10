@@ -1,7 +1,4 @@
 <?php
-require_once 'config.php';
-
-
 function conectarDB() {
     $serverName = "tcp:dtb.database.windows.net,1433";
     $connectionOptions = array(
