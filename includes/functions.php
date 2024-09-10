@@ -63,17 +63,51 @@ function agregarComentario($contenido_id, $usuario_id, $comentario) {
     return $resultado;
 }
 
-function verificarSuscripcion($usuario_id) {
-    $conn = conectarDB();
-    $stmt = $conn->prepare("SELECT suscrito FROM usuarios WHERE id = ?");
-    $stmt->bind_param("i", $usuario_id);
-    $stmt->execute();
-    $resultado = $stmt->get_result()->fetch_assoc();
-    $stmt->close();
-    $conn->close();
-    return $resultado['suscrito'];
-}
+// includes/functions.php
 
+// includes/functions.php
+
+// includes/functions.php
+
+function registrarUsuario($nombre, $email, $password, $imagen) {
+    // Database connection
+    $conn = conectarDB();
+
+    // Sanitize input
+    $nombre = $conn->quote($nombre);
+    $email = $conn->quote($email);
+    $password = password_hash($password, PASSWORD_BCRYPT);
+
+    // Handle image upload
+    $imagenContenido = null;
+    if (is_array($imagen) && $imagen['error'] == UPLOAD_ERR_OK) {
+        $imagenContenido = file_get_contents($imagen['tmp_name']);
+    }
+
+    // Check if email already exists
+    $sql = "SELECT id FROM usuarios WHERE email = $email";
+    $result = $conn->query($sql);
+    if ($result->rowCount() > 0) {
+        return false; // Email already exists
+    }
+
+    // Insert user into database
+    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, password, imagen) VALUES (?, ?, ?, ?)");
+    $stmt->bindParam(1, $nombre);
+    $stmt->bindParam(2, $email);
+    $stmt->bindParam(3, $password);
+    $stmt->bindParam(4, $imagenContenido, PDO::PARAM_LOB);
+    if ($stmt->execute()) {
+        // Start session and set session variables
+        session_start();
+        $_SESSION['usuario_id'] = $conn->lastInsertId();
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['email'] = $email;
+        return true;
+    } else {
+        return false;
+    }
+}
 function contarContenidos($tipo) {
     $conn = conectarDB();
     $stmt = $conn->prepare("SELECT COUNT(*) as total FROM contenidos WHERE tipo = ?");
@@ -85,26 +119,19 @@ function contarContenidos($tipo) {
     return $resultado['total'];
 }
 
-function registrarUsuario($nombre, $email, $password) {
-    $conn = conectarDB();
-    $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $nombre, $email, $passwordHash);
-    $resultado = $stmt->execute();
-    $stmt->close();
-    $conn->close();
-    return $resultado;
-}
+// includes/functions.php
 
 function iniciarSesion($email, $password) {
     $conn = conectarDB();
     $stmt = $conn->prepare("SELECT id, password, es_admin FROM usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $stmt->bindParam(1, $email);
     $stmt->execute();
-    $stmt->bind_result($id, $passwordHash, $es_admin);
-    $stmt->fetch();
-    $stmt->close();
-    $conn->close();
+    $stmt->bindColumn(1, $id);
+    $stmt->bindColumn(2, $passwordHash);
+    $stmt->bindColumn(3, $es_admin);
+    $stmt->fetch(PDO::FETCH_BOUND);
+    $stmt->closeCursor();
+    $conn = null;
 
     if (password_verify($password, $passwordHash)) {
         session_start();
