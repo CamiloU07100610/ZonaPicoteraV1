@@ -48,4 +48,5 @@ $recientes = obtenerContenidos('video', 'fecha_subida DESC', 1);
     </div>
 </div>
 
+
 <?php require_once 'includes/footer.php'; ?>

@@ -10,6 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     echo "<div class='alert alert-success'>Mensaje enviado exitosamente.</div>";
 }
+
+
+phpinfo();
 ?>
 
 <div class="container">
