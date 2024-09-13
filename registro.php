@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>Registrarse</h1>
         <form method="post">
             <div class="form-group">
-                <label for="nombre">Nombre</label>
+                <label for="nombre">Nombre De Usuario</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required>
             </div>
             <div class="form-group">
