@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7752aed3-51b5-4f72-bf19-c54003d99b08" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contenido.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/1000520541.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/1000520547.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/1000520557.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/Fondo.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/Vídeo sin título ‐ Hecho con Clipchamp.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/subir.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/subir.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comentarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/comentarios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagenes.php" beforeDir="false" afterPath="$PROJECT_DIR$/imagenes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obtener_comentarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/obtener_comentarios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perfil.php" beforeDir="false" afterPath="$PROJECT_DIR$/perfil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registro.php" beforeDir="false" afterPath="$PROJECT_DIR$/registro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/videos.php" beforeDir="false" afterPath="$PROJECT_DIR$/videos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/db.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +146,8 @@
       <workItem from="1726147515813" duration="3450000" />
       <workItem from="1726151170741" duration="8830000" />
       <workItem from="1726235030998" duration="11623000" />
+      <workItem from="1726494999566" duration="62000" />
+      <workItem from="1726675240690" duration="2525000" />
     </task>
     <servers />
   </component>
@@ -204,7 +186,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/script.js</url>
           <line>34</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
