@@ -60,4 +60,8 @@ $conn->exec($sql);
 } catch (PDOException $e) {
 error_log("Error creating tables: " . $e->getMessage());
 }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master/master
